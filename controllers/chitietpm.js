@@ -10,7 +10,7 @@ exports.create = async (req, res,next) =>{
         if (err) {
             return next(err);
         }
-        res.send(chitietpm)
+        res.status(200).json(chitietpm)
     })
 };
 exports.list =  async (req, res, next) => {
@@ -40,7 +40,7 @@ exports.update = async (req, res, next)=> {
 exports.deletechitietpm = async (req, res, next)=> {
     try {
         await Chitietpm.findByIdAndRemove(req.params.id)
-        res.send('Chitietpm deleted.');
+        res.status(200).send('Chitietpm deleted.');
     } catch (error) {
         next(error)
     }
@@ -48,7 +48,7 @@ exports.deletechitietpm = async (req, res, next)=> {
 exports.deleteall = async (req, res, next)=> {
     try {
         await Chitietpm.deleteMany();
-        res.sendStatus(200);
+        res.status(200).send('Chitietpm deleted all');
     } catch (error) {
         next(error)
     }

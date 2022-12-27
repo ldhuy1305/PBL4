@@ -12,7 +12,7 @@ exports.create = async (req, res,next) =>{
         if (err) {
             return next(err);
         }
-        res.send('Created ')
+        res.status(200).json(docgia);
     })
 };
 exports.list =  async (req, res, next) => {
@@ -34,7 +34,7 @@ exports.details = async (req, res, next)=> {
 exports.update = async (req, res, next)=> {
     try {
         const docgia = await Docgia.findByIdAndUpdate(req.params.id, {$set: req.body})
-        res.send('Udpated.');
+        res.status(200).json(docgia);
     } catch (error) {
         next(error)
     }

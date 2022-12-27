@@ -3,11 +3,10 @@ const dbConfig = 'mongodb://localhost:27017';
 const mongoose = require('mongoose');
 
 // Connecting to the database
-console.log("connecting to", dbConfig);
 mongoose
   .connect(dbConfig)
   .then(() => {
-    console.log("connected to MongoDB");
+    console.log("Connected to MongoDB");
   })
   .catch((error) => {
     console.log("error connecting to MongoDB:", error.message);
@@ -30,7 +29,7 @@ app.use('/phieumuon', Phieumuon);
 app.use('/docgia', Docgia);
 app.use('/nguoidung', Nguoidung);
 app.use('/chitietpm', Chitietpm);
-let port = 1234;
+let port = 3000;
 app.listen(port, () => {
-    console.log('Server is up and running on port numner ' + port);
+    console.log('Server is up and running on port number ' + port);
 });
