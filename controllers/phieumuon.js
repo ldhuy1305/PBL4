@@ -64,7 +64,7 @@ exports.update = async (req, res, next)=> {
         //         message: "Not Valid"
         //     });
         // }
-        const phieumuon = await Phieumuon.findByIdAndUpdate(req.params.id, {$set: req.body})
+        const phieumuon = await Phieumuon.findByIdAndUpdate(req.params.id, {$set: req.body},  {new:true})
         res.status(200).json(phieumuon);
 
     } catch (error) {

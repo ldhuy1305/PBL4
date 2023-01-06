@@ -5,7 +5,8 @@ exports.create = async (req, res,next) =>{
             hoten: req.body.hoten,
             diachi: req.body.diachi,
             namsinh: req.body.namsinh,
-            soluongsachdamuon: req.body.soluongsachdamuon
+            soluongsachdamuon: req.body.soluongsachdamuon,
+            vipham: req.body.vipham
         }
     );
     docgia.save(function (err) {
@@ -33,7 +34,7 @@ exports.details = async (req, res, next)=> {
 };
 exports.update = async (req, res, next)=> {
     try {
-        const docgia = await Docgia.findByIdAndUpdate(req.params.id, {$set: req.body})
+        const docgia = await Docgia.findByIdAndUpdate(req.params.id, {$set: req.body},{new :true})
         res.status(200).json(docgia);
     } catch (error) {
         next(error)

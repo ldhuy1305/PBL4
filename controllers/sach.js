@@ -22,20 +22,24 @@ exports.create = async (req, res,next) =>{
 };
 exports.list =  async (req, res, next) => {
     try {
-        const Sachs = await Sach.find()
-        res.status(200).json(Sachs);
+        sl = req.query.soluonghientai;
+        if (sl == 1) {
+            const Sachs = await Sach.find({soluonghientai: 1});
+            res.status(200).json(Sachs);
+        }else if (sl == 0) {
+            const Sachs = await Sach.find({soluonghientai: 0});
+            res.status(200).json(Sachs);
+        }else {
+            const Sachs = await Sach.find();
+            res.status(200).json(Sachs);
+        }            
     } catch (error) {
         next(error)
     }
 };
-exports.listdetails =  async (req, res, next) => {
+exports.list1 =  async (req, res, next) => {
     try {
-        var query = req.query;
-        console.log(query.nhande);
-        const Sachs = await Sach.find({nhande : /req.query.nhande/})
-        // const Sachs = await Sach.find({$or: [{nhande : /req.query.nhande/}, {theloai : /req.query.theloai/}]})
-        //{nhande:/req.query.nhande/,theloai:/req.query.theloai/,nxb:/req.query.nxb/,namxb:/req.query.namxb/,tacgia:/req.query.tacgia/,ngonngu:/req.query.ngonngu/}
-
+        const Sachs = await Sach.find({ soluonghientai: 1 })
         res.status(200).json(Sachs);
     } catch (error) {
         next(error)
@@ -51,7 +55,7 @@ exports.details = async (req, res, next)=> {
 };
 exports.update = async (req, res, next)=> {
     try {
-        const sach = await Sach.findByIdAndUpdate(req.params.id, {$set: req.body})
+        const sach = await Sach.findByIdAndUpdate(req.params.id, {$set: req.body},{new: true})
         res.send({message:'Sach udpated.',sach:sach});
     } catch (error) {
         next(error)

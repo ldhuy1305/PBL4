@@ -38,7 +38,7 @@ exports.details = async (req, res, next)=> {
 };
 exports.update = async (req, res, next)=> {
     try {
-        const nguoidung = await Nguoidung.findByIdAndUpdate(req.params.id, {$set: req.body})
+        const nguoidung = await Nguoidung.findByIdAndUpdate(req.params.id, {$set: req.body},{new:true})
         res.send('Udpated.');
     } catch (error) {
         next(error)

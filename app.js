@@ -1,5 +1,5 @@
 //Configuring the database
-const dbConfig = 'mongodb://localhost:27017';
+const dbConfig = 'mongodb+srv://PBL4:qwe123@cluster0.vlg4ciw.mongodb.net/?retryWrites=true&w=majority';
 const mongoose = require('mongoose');
 
 // Connecting to the database

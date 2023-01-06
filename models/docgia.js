@@ -24,6 +24,10 @@ const docgiaSchema = mongoose.Schema({
       type: Number,
       default:0
     },
+    vipham:{
+      type : Boolean,
+      default : false
+    }
 });
 
 
